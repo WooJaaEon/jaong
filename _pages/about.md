@@ -5,7 +5,9 @@ permalink: /about/
 ---
 
 ## Data_Mining Lecture
+
  `-` Day 1. Fastpages Blog 생성
+ 
  `-` Day 2.
 
 ## Study diary
