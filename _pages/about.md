@@ -4,13 +4,17 @@ title: About Me
 permalink: /about/
 ---
 
-## Data_Mining Lecture
+### Learn : Data_Mining Lecture
 
- `-` Day 1. Fastpages Blog 생성
+
+### Use program
+
+ `-` python
  
- `-` Day 2.
+ `-` R
+ 
+ `-` SQL
 
-## Study diary
 
 This website is powered by **[fastpages](https://github.com/fastai/fastpages)** [^1].
 
