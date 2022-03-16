@@ -3,7 +3,7 @@ toc: true
 layout: post
 description: A minimal example of using markdown with fastpages.
 categories: [markdown]
-title: Markdown Cheat Sheet
+title: How to use markdown 
 ---
 
 # Markdown Cheat Sheet
