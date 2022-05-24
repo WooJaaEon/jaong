@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="twitter:card" content="summary_large_image" /><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Introduction | Jaeeon</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="Introduction" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="An easy to use blogging platform with support for Jupyter Notebooks." />
+<meta property="og:description" content="An easy to use blogging platform with support for Jupyter Notebooks." />
+<link rel="canonical" href="https://woojaaeon.github.io/jaong/2022/05/24/Ex5_proximity_analysis.html" />
+<meta property="og:url" content="https://woojaaeon.github.io/jaong/2022/05/24/Ex5_proximity_analysis.html" />
+<meta property="og:site_name" content="Jaeeon" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2022-05-24T00:00:00-05:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Introduction" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2022-05-24T00:00:00-05:00","datePublished":"2022-05-24T00:00:00-05:00","description":"An easy to use blogging platform with support for Jupyter Notebooks.","headline":"Introduction","mainEntityOfPage":{"@type":"WebPage","@id":"https://woojaaeon.github.io/jaong/2022/05/24/Ex5_proximity_analysis.html"},"url":"https://woojaaeon.github.io/jaong/2022/05/24/Ex5_proximity_analysis.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/jaong/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://woojaaeon.github.io/jaong/feed.xml" title="Jaeeon" /><link rel="shortcut icon" type="image/x-icon" href="/jaong/images/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.12.0/katex.min.css" integrity="sha512-h7nl+xz8wgDlNM4NqKEM4F1NkIRS17M9+uJwIGwuo8vGqIl4BhuCKdxjWEINm+xyrUjNCnK5dCrhM0sj+wTIXw==" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.12.0/katex.min.js" integrity="sha512-/CMIhXiDA3m2c9kzRyd97MTb3MC6OVnx4TElQ7fkkoRghwDf6gi41gaT1PwF270W6+J60uTmwgeRpNpJdRV6sg==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.12.0/contrib/auto-render.min.js" integrity="sha512-Do7uJAaHZm5OLrIv/yN4w0iG1dbu01kzdMNnFfu/mAqgUk6Nniv2JYHcwH+cNwjqgLcqcuBBk+JRvprLVI8azg==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha512-0doc9hKxR3PYwso42RD1p5ySZpzzuDiOwMrdCEh2WdJZCjcmFKc/wEnL+z8fBQrnHoiNWbo+3fiGkOYXBdQp4A==" crossorigin="anonymous"></script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement( document.body, {
+        delimiters: [
+            {left: "$$", right: "$$", display: true},
+            {left: "[%", right: "%]", display: true},
+            {left: "$", right: "$", display: false}
+        ]}
+        );
+    });
+    </script>
+
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title") && (el.className != "emoji")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head>
+<body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/jaong/">Jaeeon</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/jaong/about/">About Me</a><a class="page-link" href="/jaong/search/">Search</a><a class="page-link" href="/jaong/categories/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Introduction</h1><p class="post-meta post-meta-title"><time class="dt-published" datetime="2022-05-24T00:00:00-05:00" itemprop="datePublished">
+        May 24, 2022
+      </time>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      6 min read
+    
+</span></p>
+
+    
+
+    
+      
+        <div class="pb-5 d-flex flex-justify-center">
+          <div class="px-2">
+
+    <a href="https://github.com/WooJaaEon/jaong/tree/master/_notebooks/2022-05-24-Ex5_proximity_analysis.ipynb" role="button" target="_blank">
+<img class="notebook-badge-image" src="/jaong/assets/badges/github.svg" alt="View On GitHub">
+    </a>
+</div>
+
+          <div class="px-2">
+    <a href="https://mybinder.org/v2/gh/WooJaaEon/jaong/master?filepath=_notebooks%2F2022-05-24-Ex5_proximity_analysis.ipynb" target="_blank">
+        <img class="notebook-badge-image" src="/jaong/assets/badges/binder.svg" alt="Open In Binder"/>
+    </a>
+</div>
+
+          <div class="px-2">
+    <a href="https://colab.research.google.com/github/WooJaaEon/jaong/blob/master/_notebooks/2022-05-24-Ex5_proximity_analysis.ipynb" target="_blank">
+        <img class="notebook-badge-image" src="/jaong/assets/badges/colab.svg" alt="Open In Colab"/>
+    </a>
+</div>
+          <div class="px-2">
+  <a href="https://deepnote.com/launch?url=https%3A%2F%2Fgithub.com%2FWooJaaEon%2Fjaong%2Fblob%2Fmaster%2F_notebooks%2F2022-05-24-Ex5_proximity_analysis.ipynb" target="_blank">
+      <img class="notebook-badge-image" src="/jaong/assets/badges/deepnote.svg" alt="Launch in Deepnote"/>
+  </a>
+</div>
+
+        </div>
+      </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <!--
+#################################################
+### THIS FILE WAS AUTOGENERATED! DO NOT EDIT! ###
+#################################################
+# file to edit: _notebooks/2022-05-24-Ex5_proximity_analysis.ipynb
+-->
+
+<div class="container" id="notebook-container">
+        
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>This notebook is an exercise in the <a href="https://www.kaggle.com/learn/geospatial-analysis">Geospatial Analysis</a> course.  You can reference the tutorial at <a href="https://www.kaggle.com/alexisbcook/proximity-analysis">this link</a>.</strong></p>
+<hr />
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">import</span> <span class="nn">geopandas</span> <span class="k">as</span> <span class="nn">gpd</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">shapely.geometry</span> <span class="kn">import</span> <span class="n">MultiPolygon</span>
+
+<span class="kn">import</span> <span class="nn">folium</span>
+<span class="kn">from</span> <span class="nn">folium</span> <span class="kn">import</span> <span class="n">Choropleth</span><span class="p">,</span> <span class="n">Marker</span>
+<span class="kn">from</span> <span class="nn">folium.plugins</span> <span class="kn">import</span> <span class="n">HeatMap</span><span class="p">,</span> <span class="n">MarkerCluster</span>
+
+<span class="kn">from</span> <span class="nn">learntools.core</span> <span class="kn">import</span> <span class="n">binder</span>
+<span class="n">binder</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="nb">globals</span><span class="p">())</span>
+<span class="kn">from</span> <span class="nn">learntools.geospatial.ex5</span> <span class="kn">import</span> <span class="o">*</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>You'll use the <code>embed_map()</code> function to visualize your maps.</p>
+<p>지도를 시각화하기 위해 <code>embed_map()</code> 함수를 사용할 것입니다.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">embed_map</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">file_name</span><span class="p">):</span>
+    <span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">IFrame</span>
+    <span class="n">m</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">file_name</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">IFrame</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="s1">&#39;100%&#39;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="s1">&#39;500px&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Exercises">Exercises<a class="anchor-link" href="#Exercises"> </a></h1><h3 id="1)-Visualize-the-collision-data.">1) Visualize the collision data.<a class="anchor-link" href="#1)-Visualize-the-collision-data."> </a></h3><p>Run the code cell below to load a GeoDataFrame <code>collisions</code> tracking major motor vehicle collisions in 2013-2018.</p>
+<p>아래 코드 셀을 실행하여 2013-2018년의 주요 자동차 충돌을 추적하는 GeoDataFrame<code>collisions</code>을 로드합니다.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">collisions</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="s2">&quot;../input/geospatial-learn-course-data/NYPD_Motor_Vehicle_Collisions/NYPD_Motor_Vehicle_Collisions/NYPD_Motor_Vehicle_Collisions.shp&quot;</span><span class="p">)</span>
+<span class="n">collisions</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Use the "LATITUDE" and "LONGITUDE" columns to create an interactive map to visualize the collision data.  What type of map do you think is most effective?</p>
+<p>"LATITUDE" 및 "LONGITUDE" 열을 사용하여 충돌 데이터를 시각화하는 대화형 맵을 만듭니다. 어떤 유형의 지도가 가장 효과적이라고 생각하십니까?</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">m_1</span> <span class="o">=</span> <span class="n">folium</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">location</span><span class="o">=</span><span class="p">[</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mi">74</span><span class="p">],</span> <span class="n">zoom_start</span><span class="o">=</span><span class="mi">11</span><span class="p">)</span> 
+
+<span class="c1"># Your code here: Visualize the collision data</span>
+<span class="n">HeatMap</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">collisions</span><span class="p">[[</span><span class="s1">&#39;LATITUDE&#39;</span><span class="p">,</span> <span class="s1">&#39;LONGITUDE&#39;</span><span class="p">]],</span> <span class="n">radius</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">add_to</span><span class="p">(</span><span class="n">m_1</span><span class="p">)</span>
+
+<span class="c1"># Uncomment to see a hint</span>
+<span class="n">q_1</span><span class="o">.</span><span class="n">hint</span><span class="p">()</span>
+
+<span class="c1"># Show the map</span>
+<span class="n">embed_map</span><span class="p">(</span><span class="n">m_1</span><span class="p">,</span> <span class="s2">&quot;q_1.html&quot;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">q_1</span><span class="o">.</span><span class="n">check</span><span class="p">()</span>
+
+<span class="c1"># Uncomment to see our solution (your code may look different!)</span>
+<span class="c1">#q_1.solution()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="2)-Understand-hospital-coverage.">2) Understand hospital coverage.<a class="anchor-link" href="#2)-Understand-hospital-coverage."> </a></h3><p>Run the next code cell to load the hospital data.</p>
+<p>다음 코드 셀을 실행하여 병원 데이터를 로드합니다.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">hospitals</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="s2">&quot;../input/geospatial-learn-course-data/nyu_2451_34494/nyu_2451_34494/nyu_2451_34494.shp&quot;</span><span class="p">)</span>
+<span class="n">hospitals</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Use the "latitude" and "longitude" columns to visualize the hospital locations.</p>
+<p>"위도" 및 "경도" 열을 사용하여 병원 위치를 시각화합니다.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">m_2</span> <span class="o">=</span> <span class="n">folium</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">location</span><span class="o">=</span><span class="p">[</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mi">74</span><span class="p">],</span> <span class="n">zoom_start</span><span class="o">=</span><span class="mi">11</span><span class="p">)</span> 
+
+<span class="c1"># Your code here: Visualize the hospital locations</span>
+<span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">hospitals</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+    <span class="n">Marker</span><span class="p">([</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;latitude&#39;</span><span class="p">],</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;longitude&#39;</span><span class="p">]],</span> <span class="n">popup</span><span class="o">=</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">add_to</span><span class="p">(</span><span class="n">m_2</span><span class="p">)</span>
+
+<span class="c1"># Uncomment to see a hint</span>
+<span class="n">q_2</span><span class="o">.</span><span class="n">hint</span><span class="p">()</span>
+        
+<span class="c1"># Show the map</span>
+<span class="n">embed_map</span><span class="p">(</span><span class="n">m_2</span><span class="p">,</span> <span class="s2">&quot;q_2.html&quot;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">q_2</span><span class="o">.</span><span class="n">check</span><span class="p">()</span>
+
+<span class="c1"># Uncomment to see our solution (your code may look different!)</span>
+<span class="c1">#q_2.solution()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="3)-When-was-the-closest-hospital-more-than-10-kilometers-away?">3) When was the closest hospital more than 10 kilometers away?<a class="anchor-link" href="#3)-When-was-the-closest-hospital-more-than-10-kilometers-away?"> </a></h3><p>Create a DataFrame <code>outside_range</code> containing all rows from <code>collisions</code> with crashes that occurred more than 10 kilometers from the closest hospital.</p>
+<p>Note that both <code>hospitals</code> and <code>collisions</code> have EPSG 2263 as the coordinate reference system, and EPSG 2263 has units of meters.</p>
+<hr />
+<p><strong>3) 10km 이상 떨어진 가장 가까운 병원은 언제였습니까?</strong></p>
+<p>가장 가까운 병원에서 10km 이상 떨어진 곳에서 발생한 충돌이 있는 <code>collisions</code> 의 모든 행을 포함하는 DataFrame <code>outside_range</code>를 만듭니다.</p>
+<p><code>hospitals</code>과 <code>collisions</code> 모두 좌표 참조 시스템으로 EPSG 2263을 사용하고 EPSG 2263은 미터 단위를 사용합니다.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">hos_df_buffer</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">(</span><span class="n">geometry</span><span class="o">=</span><span class="n">hospitals</span><span class="o">.</span><span class="n">geometry</span><span class="p">)</span><span class="o">.</span><span class="n">buffer</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">hos_df_buffer</span><span class="p">)</span>
+
+<span class="n">hos_union</span> <span class="o">=</span> <span class="n">hos_df_buffer</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">unary_union</span>
+<span class="n">hos_union</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">outside_range</span> <span class="o">=</span> <span class="n">collisions</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="o">~</span><span class="n">collisions</span><span class="p">[</span><span class="s2">&quot;geometry&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">hos_union</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="n">x</span><span class="p">))]</span>
+<span class="n">outside_range</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">q_3</span><span class="o">.</span><span class="n">check</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">q_3</span><span class="o">.</span><span class="n">hint</span><span class="p">()</span>
+<span class="c1">#q_3.solution()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The next code cell calculates the percentage of collisions that occurred more than 10 kilometers away from the closest hospital.</p>
+<p>다음 코드 셀은 가장 가까운 병원에서 10km 이상 떨어진 곳에서 발생한 충돌의 비율을 계산합니다.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">percentage</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="mi">100</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">outside_range</span><span class="p">)</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">collisions</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Percentage of collisions more than 10 km away from the closest hospital: </span><span class="si">{}</span><span class="s2">%&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">percentage</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="4)-Make-a-recommender.">4) Make a recommender.<a class="anchor-link" href="#4)-Make-a-recommender."> </a></h3><p>When collisions occur in distant locations, it becomes even more vital that injured persons are transported to the nearest available hospital.</p>
+<p>With this in mind, you decide to create a recommender that:</p>
+<ul>
+<li>takes the location of the crash (in EPSG 2263) as input,</li>
+<li>finds the closest hospital (where distance calculations are done in EPSG 2263), and </li>
+<li>returns the name of the closest hospital. </li>
+</ul>
+<hr />
+<p>멀리 떨어진 곳에서 충돌이 발생하면 부상자를 가까운 병원으로 이송하는 것이 더욱 중요해집니다.</p>
+<p>이를 염두에 두고 다음과 같은 추천자를 만들기로 결정합니다.</p>
+<ul>
+<li>충돌 위치(EPSG 2263에서)를 입력으로 사용합니다.</li>
+<li>가장 가까운 병원을 찾습니다(거리 계산은 EPSG 2263에서 수행됨).</li>
+<li>가장 가까운 병원의 이름을 반환합니다.</li>
+</ul>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">best_hospital</span><span class="p">(</span><span class="n">collision_location</span><span class="p">):</span>
+    <span class="c1"># Your code here</span>
+    <span class="n">idx_min</span> <span class="o">=</span> <span class="n">hospitals</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">distance</span><span class="p">(</span><span class="n">collision_location</span><span class="p">)</span><span class="o">.</span><span class="n">idxmin</span><span class="p">()</span>
+    <span class="n">my_hospital</span> <span class="o">=</span> <span class="n">hospitals</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">idx_min</span><span class="p">]</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">my_hospital</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">name</span>
+
+<span class="c1"># Test your function: this should suggest CALVARY HOSPITAL INC</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">best_hospital</span><span class="p">(</span><span class="n">outside_range</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">q_4</span><span class="o">.</span><span class="n">check</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">q_4</span><span class="o">.</span><span class="n">hint</span><span class="p">()</span>
+<span class="c1">#q_4.solution()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="5)-Which-hospital-is-under-the-highest-demand?">5) Which hospital is under the highest demand?<a class="anchor-link" href="#5)-Which-hospital-is-under-the-highest-demand?"> </a></h3><p>Considering only collisions in the <code>outside_range</code> DataFrame, which hospital is most recommended?</p>
+<p>Your answer should be a Python string that exactly matches the name of the hospital returned by the function you created in <strong>4)</strong>.</p>
+<hr />
+<p><strong>5) 수요가 가장 많은 병원은?</strong></p>
+<p><code>outside_range</code> DataFrame에서 충돌만 고려한다면 어느 병원을 가장 추천하는가?</p>
+<p><strong>4)</strong>에서 생성한 함수가 반환한 병원 이름과 정확히 일치하는 Python 문자열이어야 합니다.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">best_hospital</span><span class="p">(</span><span class="n">outside_range</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+<span class="c1">#&gt; CALVARY HOSPITAL INC</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">highest_demand</span> <span class="o">=</span> <span class="n">outside_range</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">best_hospital</span><span class="p">)</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">idxmax</span>
+<span class="n">highest_demand</span> 
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">q_5</span><span class="o">.</span><span class="n">check</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">q_5</span><span class="o">.</span><span class="n">hint</span><span class="p">()</span>
+<span class="c1">#q_5.solution()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="6)-Where-should-the-city-construct-new-hospitals?">6) Where should the city construct new hospitals?<a class="anchor-link" href="#6)-Where-should-the-city-construct-new-hospitals?"> </a></h3><p>Run the next code cell (without changes) to visualize hospital locations, in addition to collisions that occurred more than 10 kilometers away from the closest hospital.</p>
+<p>다음 코드 셀(변경 없이)을 실행하여 가장 가까운 병원에서 10km 이상 떨어진 곳에서 발생한 충돌 외에도 병원 위치를 시각화합니다.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">m_6</span> <span class="o">=</span> <span class="n">folium</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">location</span><span class="o">=</span><span class="p">[</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mi">74</span><span class="p">],</span> <span class="n">zoom_start</span><span class="o">=</span><span class="mi">11</span><span class="p">)</span> 
+
+<span class="n">coverage</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">(</span><span class="n">geometry</span><span class="o">=</span><span class="n">hospitals</span><span class="o">.</span><span class="n">geometry</span><span class="p">)</span><span class="o">.</span><span class="n">buffer</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span>
+<span class="n">folium</span><span class="o">.</span><span class="n">GeoJson</span><span class="p">(</span><span class="n">coverage</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">to_crs</span><span class="p">(</span><span class="n">epsg</span><span class="o">=</span><span class="mi">4326</span><span class="p">))</span><span class="o">.</span><span class="n">add_to</span><span class="p">(</span><span class="n">m_6</span><span class="p">)</span>
+<span class="n">HeatMap</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">outside_range</span><span class="p">[[</span><span class="s1">&#39;LATITUDE&#39;</span><span class="p">,</span> <span class="s1">&#39;LONGITUDE&#39;</span><span class="p">]],</span> <span class="n">radius</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span><span class="o">.</span><span class="n">add_to</span><span class="p">(</span><span class="n">m_6</span><span class="p">)</span>
+<span class="n">folium</span><span class="o">.</span><span class="n">LatLngPopup</span><span class="p">()</span><span class="o">.</span><span class="n">add_to</span><span class="p">(</span><span class="n">m_6</span><span class="p">)</span>
+
+<span class="n">embed_map</span><span class="p">(</span><span class="n">m_6</span><span class="p">,</span> <span class="s1">&#39;m_6.html&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Click anywhere on the map to see a pop-up with the corresponding location in latitude and longitude.</p>
+<p>The city of New York reaches out to you for help with deciding locations for two brand new hospitals.  They specifically want your help with identifying locations to bring the calculated percentage from step <strong>3)</strong> to less than ten percent.  Using the map (and without worrying about zoning laws or what potential buildings would have to be removed in order to build the hospitals), can you identify two locations that would help the city accomplish this goal?</p>
+<p>Put the proposed latitude and longitude for hospital 1 in <code>lat_1</code> and <code>long_1</code>, respectively.  (Likewise for hospital 2.)</p>
+<p>Then, run the rest of the cell as-is to see the effect of the new hospitals.  Your answer will be marked correct, if the two new hospitals bring the percentage to less than ten percent.</p>
+<hr />
+<p>지도의 아무 곳이나 클릭하면 해당 위치의 위도 및 경도 팝업이 표시됩니다.</p>
+<p>New York 시는 두 곳의 새로운 병원을 지을 위치를 결정하는 데 도움을 드리기 위해 연락을 드립니다. 그들은 특히 <strong>3)</strong> 단계에서 계산된 백분율을 10% 미만으로 만들기 위해 위치 식별에 대한 귀하의 도움을 원합니다. 지도를 사용하여(지역 설정법이나 병원을 건설하기 위해 제거해야 할 잠재적 건물에 대해 걱정하지 않고) 도시가 이 목표를 달성하는 데 도움이 될 두 위치를 식별할 수 있습니까?</p>
+<p>병원 1에 대해 제안된 위도와 경도를 각각 <code>lat_1</code>과 <code>long_1</code>에 넣습니다. (병원2도 마찬가지)</p>
+<p>그런 다음 나머지 셀을 그대로 실행하여 새 병원의 효과를 확인하십시오. 두 개의 새로운 병원에서 백분율을 10% 미만으로 낮추면 답이 정답으로 표시됩니다.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">lat_1</span> <span class="o">=</span> <span class="mf">40.6714</span>
+<span class="n">long_1</span> <span class="o">=</span> <span class="o">-</span><span class="mf">73.8492</span>
+
+<span class="c1"># Your answer here: proposed location of hospital 2</span>
+<span class="n">lat_2</span> <span class="o">=</span> <span class="mf">40.6702</span>
+<span class="n">long_2</span> <span class="o">=</span> <span class="o">-</span><span class="mf">73.7612</span>
+
+
+<span class="c1"># Do not modify the code below this line</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">new_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+        <span class="p">{</span><span class="s1">&#39;Latitude&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">lat_1</span><span class="p">,</span> <span class="n">lat_2</span><span class="p">],</span>
+         <span class="s1">&#39;Longitude&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">long_1</span><span class="p">,</span> <span class="n">long_2</span><span class="p">]})</span>
+    <span class="n">new_gdf</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">(</span><span class="n">new_df</span><span class="p">,</span> <span class="n">geometry</span><span class="o">=</span><span class="n">gpd</span><span class="o">.</span><span class="n">points_from_xy</span><span class="p">(</span><span class="n">new_df</span><span class="o">.</span><span class="n">Longitude</span><span class="p">,</span> <span class="n">new_df</span><span class="o">.</span><span class="n">Latitude</span><span class="p">))</span>
+    <span class="n">new_gdf</span><span class="o">.</span><span class="n">crs</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;init&#39;</span> <span class="p">:</span><span class="s1">&#39;epsg:4326&#39;</span><span class="p">}</span>
+    <span class="n">new_gdf</span> <span class="o">=</span> <span class="n">new_gdf</span><span class="o">.</span><span class="n">to_crs</span><span class="p">(</span><span class="n">epsg</span><span class="o">=</span><span class="mi">2263</span><span class="p">)</span>
+    <span class="c1"># get new percentage</span>
+    <span class="n">new_coverage</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">(</span><span class="n">geometry</span><span class="o">=</span><span class="n">new_gdf</span><span class="o">.</span><span class="n">geometry</span><span class="p">)</span><span class="o">.</span><span class="n">buffer</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span>
+    <span class="n">new_my_union</span> <span class="o">=</span> <span class="n">new_coverage</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">unary_union</span>
+    <span class="n">new_outside_range</span> <span class="o">=</span> <span class="n">outside_range</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="o">~</span><span class="n">outside_range</span><span class="p">[</span><span class="s2">&quot;geometry&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">new_my_union</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="n">x</span><span class="p">))]</span>
+    <span class="n">new_percentage</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="mi">100</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">new_outside_range</span><span class="p">)</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">collisions</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;(NEW) Percentage of collisions more than 10 km away from the closest hospital: </span><span class="si">{}</span><span class="s2">%&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">new_percentage</span><span class="p">))</span>
+    <span class="c1"># Did you help the city to meet its goal?</span>
+    <span class="n">q_6</span><span class="o">.</span><span class="n">check</span><span class="p">()</span>
+    <span class="c1"># make the map</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="n">folium</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">location</span><span class="o">=</span><span class="p">[</span><span class="mf">40.7</span><span class="p">,</span> <span class="o">-</span><span class="mi">74</span><span class="p">],</span> <span class="n">zoom_start</span><span class="o">=</span><span class="mi">11</span><span class="p">)</span> 
+    <span class="n">folium</span><span class="o">.</span><span class="n">GeoJson</span><span class="p">(</span><span class="n">coverage</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">to_crs</span><span class="p">(</span><span class="n">epsg</span><span class="o">=</span><span class="mi">4326</span><span class="p">))</span><span class="o">.</span><span class="n">add_to</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+    <span class="n">folium</span><span class="o">.</span><span class="n">GeoJson</span><span class="p">(</span><span class="n">new_coverage</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">to_crs</span><span class="p">(</span><span class="n">epsg</span><span class="o">=</span><span class="mi">4326</span><span class="p">))</span><span class="o">.</span><span class="n">add_to</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">new_gdf</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+        <span class="n">Marker</span><span class="p">([</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;Latitude&#39;</span><span class="p">],</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;Longitude&#39;</span><span class="p">]])</span><span class="o">.</span><span class="n">add_to</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+    <span class="n">HeatMap</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">new_outside_range</span><span class="p">[[</span><span class="s1">&#39;LATITUDE&#39;</span><span class="p">,</span> <span class="s1">&#39;LONGITUDE&#39;</span><span class="p">]],</span> <span class="n">radius</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span><span class="o">.</span><span class="n">add_to</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+    <span class="n">folium</span><span class="o">.</span><span class="n">LatLngPopup</span><span class="p">()</span><span class="o">.</span><span class="n">add_to</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">embed_map</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="s1">&#39;q_6.html&#39;</span><span class="p">))</span>
+<span class="k">except</span><span class="p">:</span>
+    <span class="n">q_6</span><span class="o">.</span><span class="n">hint</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">q_6</span><span class="o">.</span><span class="n">solution</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Congratulations!">Congratulations!<a class="anchor-link" href="#Congratulations!"> </a></h1><p>You have just completed the Geospatial Analysis micro-course!  Great job!</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr />
+<p><em>Have questions or comments? Visit the <a href="https://www.kaggle.com/learn/geospatial-analysis/discussion">course discussion forum</a> to chat with other learners.</em></p>
+
+</div>
+</div>
+</div>
+</div>
+
+
+
+  </div><a class="u-url" href="/jaong/2022/05/24/Ex5_proximity_analysis.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/jaong/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/jaong/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/jaong/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>An easy to use blogging platform with support for Jupyter Notebooks.</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/WooJaeEon" target="_blank" title="WooJaeEon"><svg class="svg-icon grey"><use xlink:href="/jaong/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://twitter.com/fastdotai" target="_blank" title="fastdotai"><svg class="svg-icon grey"><use xlink:href="/jaong/assets/minima-social-icons.svg#twitter"></use></svg></a></li></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
