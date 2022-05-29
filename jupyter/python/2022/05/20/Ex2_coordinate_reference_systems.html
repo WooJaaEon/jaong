@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="twitter:card" content="summary_large_image" /><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Geospatial Analysis exercise - coordinate reference systems | Jaeeon</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="Geospatial Analysis exercise - coordinate reference systems" />
+<meta name="author" content="jaeeon" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Geospatial Analysis exercise - coordinate reference systems" />
+<meta property="og:description" content="Geospatial Analysis exercise - coordinate reference systems" />
+<link rel="canonical" href="https://woojaaeon.github.io/jaong/jupyter/python/2022/05/20/Ex2_coordinate_reference_systems.html" />
+<meta property="og:url" content="https://woojaaeon.github.io/jaong/jupyter/python/2022/05/20/Ex2_coordinate_reference_systems.html" />
+<meta property="og:site_name" content="Jaeeon" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2022-05-20T00:00:00-05:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Geospatial Analysis exercise - coordinate reference systems" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"jaeeon"},"dateModified":"2022-05-20T00:00:00-05:00","datePublished":"2022-05-20T00:00:00-05:00","description":"Geospatial Analysis exercise - coordinate reference systems","headline":"Geospatial Analysis exercise - coordinate reference systems","mainEntityOfPage":{"@type":"WebPage","@id":"https://woojaaeon.github.io/jaong/jupyter/python/2022/05/20/Ex2_coordinate_reference_systems.html"},"url":"https://woojaaeon.github.io/jaong/jupyter/python/2022/05/20/Ex2_coordinate_reference_systems.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/jaong/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://woojaaeon.github.io/jaong/feed.xml" title="Jaeeon" /><link rel="shortcut icon" type="image/x-icon" href="/jaong/images/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.12.0/katex.min.css" integrity="sha512-h7nl+xz8wgDlNM4NqKEM4F1NkIRS17M9+uJwIGwuo8vGqIl4BhuCKdxjWEINm+xyrUjNCnK5dCrhM0sj+wTIXw==" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.12.0/katex.min.js" integrity="sha512-/CMIhXiDA3m2c9kzRyd97MTb3MC6OVnx4TElQ7fkkoRghwDf6gi41gaT1PwF270W6+J60uTmwgeRpNpJdRV6sg==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.12.0/contrib/auto-render.min.js" integrity="sha512-Do7uJAaHZm5OLrIv/yN4w0iG1dbu01kzdMNnFfu/mAqgUk6Nniv2JYHcwH+cNwjqgLcqcuBBk+JRvprLVI8azg==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha512-0doc9hKxR3PYwso42RD1p5ySZpzzuDiOwMrdCEh2WdJZCjcmFKc/wEnL+z8fBQrnHoiNWbo+3fiGkOYXBdQp4A==" crossorigin="anonymous"></script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement( document.body, {
+        delimiters: [
+            {left: "$$", right: "$$", display: true},
+            {left: "[%", right: "%]", display: true},
+            {left: "$", right: "$", display: false}
+        ]}
+        );
+    });
+    </script>
+
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title") && (el.className != "emoji")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head>
+<body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/jaong/">Jaeeon</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/jaong/about/">About Me</a><a class="page-link" href="/jaong/search/">Search</a><a class="page-link" href="/jaong/categories/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Geospatial Analysis exercise - coordinate reference systems</h1><p class="page-description">Geospatial Analysis exercise - coordinate reference systems</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2022-05-20T00:00:00-05:00" itemprop="datePublished">
+        May 20, 2022
+      </time>• 
+          <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="p-author h-card" itemprop="name">jaeeon</span></span>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      8 min read
+    
+</span></p>
+
+    
+      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
+      
+        <a class="category-tags-link" href="/jaong/categories/#jupyter">jupyter</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/jaong/categories/#python">python</a>
+        
+      
+      </p>
+    
+
+    
+      
+        <div class="pb-5 d-flex flex-justify-center">
+          <div class="px-2">
+
+    <a href="https://github.com/WooJaaEon/jaong/tree/master/_notebooks/2022-05-20-Ex2_coordinate_reference_systems.ipynb" role="button" target="_blank">
+<img class="notebook-badge-image" src="/jaong/assets/badges/github.svg" alt="View On GitHub">
+    </a>
+</div>
+
+          <div class="px-2">
+    <a href="https://mybinder.org/v2/gh/WooJaaEon/jaong/master?filepath=_notebooks%2F2022-05-20-Ex2_coordinate_reference_systems.ipynb" target="_blank">
+        <img class="notebook-badge-image" src="/jaong/assets/badges/binder.svg" alt="Open In Binder"/>
+    </a>
+</div>
+
+          <div class="px-2">
+    <a href="https://colab.research.google.com/github/WooJaaEon/jaong/blob/master/_notebooks/2022-05-20-Ex2_coordinate_reference_systems.ipynb" target="_blank">
+        <img class="notebook-badge-image" src="/jaong/assets/badges/colab.svg" alt="Open In Colab"/>
+    </a>
+</div>
+          <div class="px-2">
+  <a href="https://deepnote.com/launch?url=https%3A%2F%2Fgithub.com%2FWooJaaEon%2Fjaong%2Fblob%2Fmaster%2F_notebooks%2F2022-05-20-Ex2_coordinate_reference_systems.ipynb" target="_blank">
+      <img class="notebook-badge-image" src="/jaong/assets/badges/deepnote.svg" alt="Launch in Deepnote"/>
+  </a>
+</div>
+
+        </div>
+      </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <ul id="toc" class="section-nav">
+<li class="toc-entry toc-h1"><a href="#Exercises">Exercises </a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#1)-Load-the-data.">1) Load the data. </a></li>
+<li class="toc-entry toc-h3"><a href="#2)-Plot-the-data.">2) Plot the data. </a></li>
+<li class="toc-entry toc-h3"><a href="#3)-Where-does-each-bird-start-and-end-its-journey?-(Part-1)">3) Where does each bird start and end its journey? (Part 1) </a></li>
+<li class="toc-entry toc-h3"><a href="#4)-Where-does-each-bird-start-and-end-its-journey?-(Part-2)">4) Where does each bird start and end its journey? (Part 2) </a></li>
+<li class="toc-entry toc-h3"><a href="#5)-Where-are-the-protected-areas-in-South-America?-(Part-1)">5) Where are the protected areas in South America? (Part 1) </a></li>
+<li class="toc-entry toc-h3"><a href="#6)-Where-are-the-protected-areas-in-South-America?-(Part-2)">6) Where are the protected areas in South America? (Part 2) </a></li>
+<li class="toc-entry toc-h3"><a href="#7)-What-percentage-of-South-America-is-protected?">7) What percentage of South America is protected? </a></li>
+<li class="toc-entry toc-h3"><a href="#8)-Where-are-the-birds-in-South-America?">8) Where are the birds in South America? </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#Keep-going">Keep going </a></li>
+</ul><!--
+#################################################
+### THIS FILE WAS AUTOGENERATED! DO NOT EDIT! ###
+#################################################
+# file to edit: _notebooks/2022-05-20-Ex2_coordinate_reference_systems.ipynb
+-->
+
+<div class="container" id="notebook-container">
+        
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Introduction</strong></p>
+<p>You are a bird conservation expert and want to understand migration patterns of purple martins.  In your research, you discover that these birds typically spend the summer breeding season in the eastern United States, and then migrate to South America for the winter.  But since this bird is under threat of endangerment, you'd like to take a closer look at the locations that these birds are more likely to visit.</p>
+<p>There are several <a href="https://www.iucn.org/theme/protected-areas/about">protected areas</a> in South America, which operate under special regulations to ensure that species that migrate (or live) there have the best opportunity to thrive.  You'd like to know if purple martins tend to visit these areas.  To answer this question, you'll use some recently collected data that tracks the year-round location of eleven different birds.</p>
+<p>Before you get started, run the code cell below to set everything up.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">geopandas</span> <span class="k">as</span> <span class="nn">gpd</span>
+
+<span class="kn">from</span> <span class="nn">shapely.geometry</span> <span class="kn">import</span> <span class="n">LineString</span>
+
+<span class="kn">from</span> <span class="nn">learntools.core</span> <span class="kn">import</span> <span class="n">binder</span>
+<span class="n">binder</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="nb">globals</span><span class="p">())</span>
+<span class="kn">from</span> <span class="nn">learntools.geospatial.ex2</span> <span class="kn">import</span> <span class="o">*</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Exercises">
+<a class="anchor" href="#Exercises" aria-hidden="true"><span class="octicon octicon-link"></span></a>Exercises<a class="anchor-link" href="#Exercises"> </a>
+</h1>
+<h3 id="1)-Load-the-data.">
+<a class="anchor" href="#1)-Load-the-data." aria-hidden="true"><span class="octicon octicon-link"></span></a>1) Load the data.<a class="anchor-link" href="#1)-Load-the-data."> </a>
+</h3>
+<p>Run the next code cell (without changes) to load the GPS data into a pandas DataFrame <code>birds_df</code>.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">birds_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"../input/geospatial-learn-course-data/purple_martin.csv"</span><span class="p">,</span> <span class="n">parse_dates</span><span class="o">=</span><span class="p">[</span><span class="s1">'timestamp'</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"There are </span><span class="si">{}</span><span class="s2"> different birds in the dataset."</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">birds_df</span><span class="p">[</span><span class="s2">"tag-local-identifier"</span><span class="p">]</span><span class="o">.</span><span class="n">nunique</span><span class="p">()))</span>
+<span class="n">birds_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>There are 11 birds in the dataset, where each bird is identified by a unique value in the "tag-local-identifier" column.  Each bird has several measurements, collected at different times of the year.</p>
+<p>Use the next code cell to create a GeoDataFrame <code>birds</code>.</p>
+<ul>
+<li>
+<code>birds</code> should have all of the columns from <code>birds_df</code>, along with a "geometry" column that contains Point objects with (longitude, latitude) locations.  </li>
+<li>Set the CRS of <code>birds</code> to <code>{'init': 'epsg:4326'}</code>.</li>
+</ul>
+<p>데이터 세트에는 11마리의 새가 있으며 각 새는 "tag-local-identifier" 열의 고유한 값으로 식별됩니다. 각 새는 일년 중 다른시기에 수집 된 여러 측정 값을 가지고 있습니다.</p>
+<p>다음 코드 셀을 사용하여 GeoDataFrame '새'를 만듭니다.</p>
+<ul>
+<li>
+<code>birds</code>에는 (경도, 위도) 위치가 있는 Point 개체를 포함하는 "기하학" 열과 함께 <code>birds_df</code>의 모든 열이 있어야 합니다.</li>
+<li>
+<code>birds</code>의 CRS를 <code>{'init': 'epsg:4326'}</code>으로 설정합니다.</li>
+</ul>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">birds</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">(</span><span class="n">birds_df</span><span class="p">,</span>
+                         <span class="n">geometry</span><span class="o">=</span><span class="n">gpd</span><span class="o">.</span><span class="n">points_from_xy</span><span class="p">(</span><span class="n">birds_df</span><span class="p">[</span><span class="s1">'location-long'</span><span class="p">],</span> <span class="n">birds_df</span><span class="p">[</span><span class="s2">"location-lat"</span><span class="p">]))</span>
+
+<span class="c1"># Your code here: Set the CRS to {'init': 'epsg:4326'}</span>
+<span class="n">birds</span><span class="o">.</span><span class="n">crs</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'init'</span><span class="p">:</span> <span class="s1">'epsg:4326'</span><span class="p">}</span>
+
+<span class="c1"># Check your answer</span>
+<span class="n">q_1</span><span class="o">.</span><span class="n">check</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">birds</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#q_1.hint()</span>
+<span class="c1">#q_1.solution()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="2)-Plot-the-data.">
+<a class="anchor" href="#2)-Plot-the-data." aria-hidden="true"><span class="octicon octicon-link"></span></a>2) Plot the data.<a class="anchor-link" href="#2)-Plot-the-data."> </a>
+</h3>
+<p>Next, we load in the <code>'naturalearth_lowres'</code> dataset from GeoPandas, and set <code>americas</code> to a GeoDataFrame containing the boundaries of all countries in the Americas (both North and South America).  Run the next code cell without changes.</p>
+<p>다음으로 GeoPandas에서 <code>'naturalearth_lowres</code> 데이터 세트를 로드하고 <code>americas</code>를 미주(북미와 남미 모두)의 모든 국가 경계를 포함하는 GeoDataFrame으로 설정합니다. 변경 없이 다음 코드 셀을 실행합니다.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">world</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="n">gpd</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">get_path</span><span class="p">(</span><span class="s1">'naturalearth_lowres'</span><span class="p">))</span>
+<span class="n">americas</span> <span class="o">=</span> <span class="n">world</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">world</span><span class="p">[</span><span class="s1">'continent'</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="s1">'North America'</span><span class="p">,</span> <span class="s1">'South America'</span><span class="p">])]</span>
+<span class="n">americas</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Use the next code cell to create a single plot that shows both: (1) the country boundaries in the <code>americas</code> GeoDataFrame, and (2) all of the points in the <code>birds_gdf</code> GeoDataFrame.</p>
+<p>Don't worry about any special styling here; just create a preliminary plot, as a quick sanity check that all of the data was loaded properly.  In particular, you don't have to worry about color-coding the points to differentiate between birds, and you don't have to differentiate starting points from ending points.  We'll do that in the next part of the exercise.</p>
+<p>다음 코드 셀을 사용하여 (1) <code>americas</code> GeoDataFrame의 국가 경계와 (2) <code>birds_gdf</code> GeoDataFrame의 모든 점을 모두 표시하는 단일 플롯을 만듭니다.</p>
+<p>특별한 스타일링에 대해 걱정하지 마십시오. 모든 데이터가 제대로 로드되었는지 신속하게 확인하기 위해 예비 플롯을 생성하기만 하면 됩니다. 특히 새를 구분하기 위해 포인트를 색으로 구분할 필요가 없고, 시작점과 끝점을 구분할 필요가 없습니다. 연습의 다음 부분에서 그렇게 할 것입니다.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">americas</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s1">'whitesmoke'</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">':'</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">'black'</span><span class="p">)</span>
+<span class="n">ax</span>
+
+<span class="n">birds</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">'red'</span><span class="p">,</span><span class="n">markersize</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+
+<span class="c1"># Uncomment to see a hint</span>
+<span class="c1">#q_2.hint()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">q_2</span><span class="o">.</span><span class="n">check</span><span class="p">()</span>
+
+<span class="c1"># Uncomment to see our solution (your code may look different!)</span>
+<span class="c1">##q_2.solution()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="3)-Where-does-each-bird-start-and-end-its-journey?-(Part-1)">
+<a class="anchor" href="#3)-Where-does-each-bird-start-and-end-its-journey?-(Part-1)" aria-hidden="true"><span class="octicon octicon-link"></span></a>3) Where does each bird start and end its journey? (Part 1)<a class="anchor-link" href="#3)-Where-does-each-bird-start-and-end-its-journey?-(Part-1)"> </a>
+</h3>
+<p>Now, we're ready to look more closely at each bird's path.  Run the next code cell to create two GeoDataFrames:</p>
+<ul>
+<li>
+<code>path_gdf</code> contains LineString objects that show the path of each bird.  It uses the <code>LineString()</code> method to create a LineString object from a list of Point objects.</li>
+<li>
+<code>start_gdf</code> contains the starting points for each bird.</li>
+</ul>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">path_df</span> <span class="o">=</span> <span class="n">birds</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"tag-local-identifier"</span><span class="p">)[</span><span class="s1">'geometry'</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">LineString</span><span class="p">(</span><span class="n">x</span><span class="p">))</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">path_gdf</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">(</span><span class="n">path_df</span><span class="p">,</span> <span class="n">geometry</span><span class="o">=</span><span class="n">path_df</span><span class="o">.</span><span class="n">geometry</span><span class="p">)</span>
+<span class="n">path_gdf</span><span class="o">.</span><span class="n">crs</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'init'</span> <span class="p">:</span><span class="s1">'epsg:4326'</span><span class="p">}</span>
+
+<span class="c1"># GeoDataFrame showing starting point for each bird</span>
+<span class="n">start_df</span> <span class="o">=</span> <span class="n">birds</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"tag-local-identifier"</span><span class="p">)[</span><span class="s1">'geometry'</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">start_gdf</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">(</span><span class="n">start_df</span><span class="p">,</span> <span class="n">geometry</span><span class="o">=</span><span class="n">start_df</span><span class="o">.</span><span class="n">geometry</span><span class="p">)</span>
+<span class="n">start_gdf</span><span class="o">.</span><span class="n">crs</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'init'</span> <span class="p">:</span><span class="s1">'epsg:4326'</span><span class="p">}</span>
+
+<span class="c1"># Show first five rows of GeoDataFrame</span>
+<span class="n">start_gdf</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Use the next code cell to create a GeoDataFrame <code>end_gdf</code> containing the final location of each bird.</p>
+<ul>
+<li>The format should be identical to that of <code>start_gdf</code>, with two columns ("tag-local-identifier" and "geometry"), where the "geometry" column contains Point objects.</li>
+<li>Set the CRS of <code>end_gdf</code> to <code>{'init': 'epsg:4326'}</code>.</li>
+</ul>
+<p>다음 코드 셀을 사용하여 각 새의 최종 위치를 포함하는 GeoDataFrame <code>end_gdf</code>를 만듭니다.</p>
+<ul>
+<li>형식은 두 개의 열("tag-local-identifier" 및 "geometry")이 있는 <code>start_gdf</code>의 형식과 동일해야 합니다. 여기서 "geometry" 열은 Point 개체를 포함합니다.</li>
+<li>
+<code>end_gdf</code>의 CRS를 <code>{'init': 'epsg:4326'}</code>으로 설정합니다.</li>
+</ul>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">end_df</span> <span class="o">=</span> <span class="n">birds</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"tag-local-identifier"</span><span class="p">)[</span><span class="s1">'geometry'</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">end_df</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">end_gdf</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">(</span><span class="n">end_df</span><span class="p">,</span> <span class="n">geometry</span><span class="o">=</span><span class="n">end_df</span><span class="o">.</span><span class="n">geometry</span><span class="p">)</span>
+<span class="n">end_gdf</span><span class="o">.</span><span class="n">crs</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'init'</span><span class="p">:</span> <span class="s1">'epsg:4326'</span><span class="p">}</span>
+<span class="n">end_gdf</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">q_3</span><span class="o">.</span><span class="n">check</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#q_3.hint()</span>
+<span class="c1">#q_3.solution()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="4)-Where-does-each-bird-start-and-end-its-journey?-(Part-2)">
+<a class="anchor" href="#4)-Where-does-each-bird-start-and-end-its-journey?-(Part-2)" aria-hidden="true"><span class="octicon octicon-link"></span></a>4) Where does each bird start and end its journey? (Part 2)<a class="anchor-link" href="#4)-Where-does-each-bird-start-and-end-its-journey?-(Part-2)"> </a>
+</h3>
+<p>Use the GeoDataFrames from the question above (<code>path_gdf</code>, <code>start_gdf</code>, and <code>end_gdf</code>) to visualize the paths of all birds on a single map.  You may also want to use the <code>americas</code> GeoDataFrame.</p>
+<p>위 질문의 GeoDataFrames(<code>path_gdf</code>, <code>start_gdf</code>, <code>end_gdf</code>)를 사용하여 단일 지도에서 모든 새의 경로를 시각화하세요. <code>americas</code> GeoDataFrame을 사용할 수도 있습니다.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">americas</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s1">'whitesmoke'</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">':'</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">'black'</span><span class="p">)</span>
+
+<span class="n">start_gdf</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">'red'</span><span class="p">,</span>  <span class="n">markersize</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+<span class="n">path_gdf</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">'green'</span><span class="p">,</span><span class="n">linestyle</span><span class="o">=</span><span class="s1">':'</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+<span class="n">end_gdf</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">'blue'</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+
+<span class="c1"># Uncomment to see a hint</span>
+<span class="c1">#q_4.hint()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">q_4</span><span class="o">.</span><span class="n">check</span><span class="p">()</span>
+
+<span class="c1"># Uncomment to see our solution (your code may look different!)</span>
+<span class="c1">#q_4.solution()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="5)-Where-are-the-protected-areas-in-South-America?-(Part-1)">
+<a class="anchor" href="#5)-Where-are-the-protected-areas-in-South-America?-(Part-1)" aria-hidden="true"><span class="octicon octicon-link"></span></a>5) Where are the protected areas in South America? (Part 1)<a class="anchor-link" href="#5)-Where-are-the-protected-areas-in-South-America?-(Part-1)"> </a>
+</h3>
+<p>It looks like all of the birds end up somewhere in South America.  But are they going to protected areas?</p>
+<p>In the next code cell, you'll create a GeoDataFrame <code>protected_areas</code> containing the locations of all of the protected areas in South America.  The corresponding shapefile is located at filepath <code>protected_filepath</code>.</p>
+<p>다음 코드 셀에서는 남미의 모든 보호 지역 위치를 포함하는 GeoDataFrame <code>protected_areas</code>를 생성합니다. 해당 shapefile은 파일 경로 <code>protected_filepath</code>에 있습니다.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">protected_filepath</span> <span class="o">=</span> <span class="s2">"../input/geospatial-learn-course-data/SAPA_Aug2019-shapefile/SAPA_Aug2019-shapefile/SAPA_Aug2019-shapefile-polygons.shp"</span>
+
+<span class="c1"># Your code here</span>
+<span class="n">protected_areas</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="n">protected_filepath</span><span class="p">)</span>
+
+<span class="c1"># Check your answer</span>
+<span class="n">q_5</span><span class="o">.</span><span class="n">check</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#q_5.hint()</span>
+<span class="c1">#q_5.solution()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="6)-Where-are-the-protected-areas-in-South-America?-(Part-2)">
+<a class="anchor" href="#6)-Where-are-the-protected-areas-in-South-America?-(Part-2)" aria-hidden="true"><span class="octicon octicon-link"></span></a>6) Where are the protected areas in South America? (Part 2)<a class="anchor-link" href="#6)-Where-are-the-protected-areas-in-South-America?-(Part-2)"> </a>
+</h3>
+<p>Create a plot that uses the <code>protected_areas</code> GeoDataFrame to show the locations of the protected areas in South America.  (<em>You'll notice that some protected areas are on land, while others are in marine waters.</em>)</p>
+<p>'protected_areas' GeoDataFrame을 사용하여 남아메리카의 보호 지역 위치를 표시하는 플롯을 만듭니다. (<em>일부 보호 구역은 육지에 있고 다른 보호 구역은 바다에 있음을 알 수 있습니다.</em>)</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">south_america</span> <span class="o">=</span> <span class="n">americas</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">americas</span><span class="p">[</span><span class="s1">'continent'</span><span class="p">]</span><span class="o">==</span><span class="s1">'South America'</span><span class="p">]</span>
+
+<span class="c1"># Your code here: plot protected areas in South America</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">south_america</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s1">'whitesmoke'</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">'black'</span><span class="p">)</span>
+
+<span class="n">protected_areas</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">'red'</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">)</span>
+
+<span class="c1"># Uncomment to see a hint</span>
+<span class="c1">#q_6.hint()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">q_6</span><span class="o">.</span><span class="n">check</span><span class="p">()</span>
+
+<span class="c1"># Uncomment to see our solution (your code may look different!)</span>
+<span class="c1">#q_6.solution()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="7)-What-percentage-of-South-America-is-protected?">
+<a class="anchor" href="#7)-What-percentage-of-South-America-is-protected?" aria-hidden="true"><span class="octicon octicon-link"></span></a>7) What percentage of South America is protected?<a class="anchor-link" href="#7)-What-percentage-of-South-America-is-protected?"> </a>
+</h3>
+<p>You're interested in determining what percentage of South America is protected, so that you know how much of South America is suitable for the birds.</p>
+<p>As a first step, you calculate the total area of all protected lands in South America (not including marine area).  To do this, you use the "REP_AREA" and "REP_M_AREA" columns, which contain the total area and total marine area, respectively, in square kilometers.</p>
+<p>Run the code cell below without changes.</p>
+<p>남아메리카의 몇 퍼센트가 보호되는지 확인하여 남아메리카의 어느 부분이 새에게 적합한지 알고 싶습니다.</p>
+<p>첫 번째 단계로 남아메리카의 모든 보호 구역(해양 지역 제외)의 총 면적을 계산합니다. 이렇게 하려면 총 면적과 총 해양 면적을 각각 평방 킬로미터 단위로 포함하는 "REP_AREA" 및 "REP_M_AREA" 열을 사용합니다.</p>
+<p>변경 없이 아래 코드 셀을 실행합니다.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">P_Area</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">protected_areas</span><span class="p">[</span><span class="s1">'REP_AREA'</span><span class="p">]</span><span class="o">-</span><span class="n">protected_areas</span><span class="p">[</span><span class="s1">'REP_M_AREA'</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"South America has </span><span class="si">{}</span><span class="s2"> square kilometers of protected areas."</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">P_Area</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Then, to finish the calculation, you'll use the <code>south_america</code> GeoDataFrame.</p>
+<p>그런 다음 계산을 완료하기 위해 <code>south_america</code> GeoDataFrame을 사용합니다.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">south_america</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Calculate the total area of South America by following these steps:</p>
+<ul>
+<li>Calculate the area of each country using the <code>area</code> attribute of each polygon (with EPSG 3035 as the CRS), and add up the results.  The calculated area will be in units of square meters.</li>
+<li>Convert your answer to have units of square kilometeters.</li>
+</ul>
+<p>다음 단계에 따라 남아메리카의 총 면적을 계산합니다.</p>
+<ul>
+<li>각 폴리곤(CRS로 EPSG 3035 사용)의 'area' 속성을 사용하여 각 국가의 면적을 계산하고 결과를 합산합니다. 계산된 면적은 평방 미터 단위입니다.</li>
+<li>답을 제곱킬로미터 단위로 변환합니다.</li>
+</ul>
+<p>참고 링크 : <a href="http://mwultong.blogspot.com/2008/01/km2-km2-m2-calc.html">http://mwultong.blogspot.com/2008/01/km2-km2-m2-calc.html</a></p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">south_america_crs</span> <span class="o">=</span> <span class="n">south_america</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">to_crs</span><span class="p">(</span><span class="n">epsg</span><span class="o">=</span><span class="mi">3035</span><span class="p">)</span><span class="o">.</span><span class="n">area</span>
+
+<span class="c1"># 평방미터(m**2)</span>
+<span class="n">sum_area</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">south_america_crs</span><span class="p">)</span>
+<span class="n">sum_area</span>
+
+<span class="c1"># 제곱킬로미터(km**2)로 변환(m2 / 10**6)</span>
+<span class="n">totalArea</span> <span class="o">=</span> <span class="n">sum_area</span> <span class="o">/</span> <span class="mi">10</span><span class="o">**</span><span class="mi">6</span>
+<span class="n">totalArea</span>
+
+<span class="c1"># Check your answer</span>
+<span class="n">q_7</span><span class="o">.</span><span class="n">check</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#q_7.hint()</span>
+<span class="c1">#q_7.solution()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Run the code cell below to calculate the percentage of South America that is protected.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">percentage_protected</span> <span class="o">=</span> <span class="n">P_Area</span><span class="o">/</span><span class="n">totalArea</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'Approximately </span><span class="si">{}% o</span><span class="s1">f South America is protected.'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">percentage_protected</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span> <span class="mi">2</span><span class="p">)))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="8)-Where-are-the-birds-in-South-America?">
+<a class="anchor" href="#8)-Where-are-the-birds-in-South-America?" aria-hidden="true"><span class="octicon octicon-link"></span></a>8) Where are the birds in South America?<a class="anchor-link" href="#8)-Where-are-the-birds-in-South-America?"> </a>
+</h3>
+<p>So, are the birds in protected areas?</p>
+<p>Create a plot that shows for all birds, all of the locations where they were discovered in South America.  Also plot the locations of all protected areas in South America.</p>
+<p>To exclude protected areas that are purely marine areas (with no land component), you can use the "MARINE" column (and plot only the rows in <code>protected_areas[protected_areas['MARINE']!='2']</code>, instead of every row in the <code>protected_areas</code> GeoDataFrame).</p>
+<p>모든 새, 남미에서 발견된 모든 위치를 보여주는 플롯을 만듭니다. 또한 남아메리카의 모든 보호 지역의 위치를 표시합니다.</p>
+<p>순수한 해양 지역(토지 구성요소 없음)인 보호 지역을 제외하려면 "MARINE" 열을 사용할 수 있습니다(그리고 <code>protected_areas[protected_areas['MARINE']!='2']</code> <code>protected_areas</code> GeoDataFrame의 모든 행).</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">south_america</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s1">'whitesmoke'</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">'black'</span><span class="p">)</span>
+
+<span class="c1"># 남아메리카의 모든 보호 지역의 위치를 표시</span>
+<span class="n">birds</span><span class="p">[</span><span class="n">birds</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">y</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'red'</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># 순수한 해양 지역(토지 구성요소 없음)인 보호 지역을 제외</span>
+<span class="n">protected_areas</span><span class="p">[</span><span class="n">protected_areas</span><span class="p">[</span><span class="s1">'MARINE'</span><span class="p">]</span><span class="o">!=</span><span class="s1">'2'</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Uncomment to see a hint</span>
+<span class="c1">#q_8.hint()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">q_8</span><span class="o">.</span><span class="n">check</span><span class="p">()</span>
+
+<span class="c1"># Uncomment to see our solution (your code may look different!)</span>
+<span class="c1">#q_8.solution()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Keep-going">
+<a class="anchor" href="#Keep-going" aria-hidden="true"><span class="octicon octicon-link"></span></a>Keep going<a class="anchor-link" href="#Keep-going"> </a>
+</h1>
+<p>Create stunning <strong><a href="https://www.kaggle.com/alexisbcook/interactive-maps">interactive maps</a></strong> with your geospatial data.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<p><em>Have questions or comments? Visit the <a href="https://www.kaggle.com/learn/geospatial-analysis/discussion">course discussion forum</a> to chat with other learners.</em></p>
+
+</div>
+</div>
+</div>
+</div>
+
+
+
+  </div><!-- from https://github.com/utterance/utterances -->
+<script src="https://utteranc.es/client.js"
+        repo="WooJaaEon/jaong"
+        issue-term="title"
+        label="blogpost-comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script><a class="u-url" href="/jaong/jupyter/python/2022/05/20/Ex2_coordinate_reference_systems.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/jaong/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/jaong/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/jaong/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>An easy to use blogging platform with support for Jupyter Notebooks.</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/WooJaeEon" target="_blank" title="WooJaeEon"><svg class="svg-icon grey"><use xlink:href="/jaong/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://twitter.com/fastdotai" target="_blank" title="fastdotai"><svg class="svg-icon grey"><use xlink:href="/jaong/assets/minima-social-icons.svg#twitter"></use></svg></a></li></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
