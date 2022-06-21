@@ -9,7 +9,7 @@ https://WooJaaEon.github.io/jaong/
 # My Blog
 
 
-_powered by [fastpages](https://github.com/fastai/fastpages)_
+_powered by [fastpages]([https://github.com/fastai/fastpages](https://woojaaeon.github.io/jaong/))_
 
 
 ## What To Do Next?
