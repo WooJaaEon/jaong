@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <title>Log In</title>
+        {% load static %} 
+        <link href="{% static 'css/login.css' %}" rel="stylesheet" />
+        <script src="https://kit.fontawesome.com/51db22a717.js" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        {% if message %}
+            <div>{{ message }}</div>
+        {% endif %}
+
+        <div class="main-container">
+            <div class="main-wrap">
+            <header>
+                {% load static %} 
+                <div class="logo-wrap">
+                    <a href="/users"><img src="{% static 'assets/img/logo.png' %}"></a>
+                </div>  
+            </header>
+
+            <form action="{% url 'login' %}" method="post">
+                {% csrf_token %}
+                <section class="login-input-section-wrap">
+                    <div class="login-input-wrap">	
+                        <!--<input placeholder="Username" type="text"></input>-->
+                        <input type="text", name="username", placeholder="Username">
+                    </div>
+                    <div class="login-input-wrap password-wrap">	
+                        <!--<input placeholder="Password" type="password"></input>-->
+                        <input type="password", name="password", placeholder="Password">
+                    </div>
+                    <div class="login-button-wrap">
+                        <button type="submit">Login</button>
+                    </div>
+                </section>
+            </form>
+            <footer>
+                <div class="copyright-wrap">
+                <span><img src="{% static 'assets/img/logo.png' %}">  Copyright © Plan, How? Corp. All Rights Reserved.</span>
+                </div>
+            </footer>
+        </div>
+    </div>
+    </body>
+</html>

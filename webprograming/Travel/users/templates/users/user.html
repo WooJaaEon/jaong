@@ -1,0 +1,13 @@
+{% extends "users/layout.html" %}
+{# 로그인 하고 나서 화면설계의 home 페이지로 이동하게 끔 해야함 #}
+{# 필요 없음 #}
+
+{% block body %}
+    <h1>Welcome, {{ request.user.first_name }}</h1>
+    <ul>
+        <li>Username: {{ request.user.username }}</li>
+        <li>Email: {{ request.user.email }}</li>
+    </ul>
+
+    <a href="{% url 'logout' %}">Log Out</a>
+{% endblock %}
