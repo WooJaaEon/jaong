@@ -7,7 +7,10 @@
 ### Second Project
 
 - Django_Basic : Harvard CS50 강의에 기반으로 정리한 Note
- -- 강의영상 : https://bit.ly/3z0GPf0
- -- 소스코드 : https://bit.ly/3pkcHXF
+- 출처!
+
+  강의영상 : https://bit.ly/3z0GPf0
+  
+  소스코드 : https://bit.ly/3pkcHXF
  
 
