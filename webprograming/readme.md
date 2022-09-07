@@ -1,3 +1,10 @@
+### Lecture
+
+##### 프로그램호환
+
+- Apache, PHP 설치 방법
+
+---
 ### First Project
 
 - Travel : 여행 계획 정리 애플리케이션
@@ -11,8 +18,4 @@
 : 강의영상 - https://bit.ly/3z0GPf0  
 : 소스코드 - https://bit.ly/3pkcHXF  
  
-### Lecture
 
-##### 프로그램호환
-
-- Apache, PHP 설치 방법
