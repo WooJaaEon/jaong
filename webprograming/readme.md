@@ -19,3 +19,7 @@
 : 소스코드 - https://bit.ly/3pkcHXF  
  
 
+### Final Project
+
+- KDT 산업체연계프로젝트
+- 2조 포스틱(for small technoly) with forsb(for small business) 
